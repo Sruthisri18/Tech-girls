@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>File Upload to Google Drive</title>
+</head>
+<body>
+  <h2>Upload File to Google Drive</h2>
+  <input type="file" id="fileInput" />
+  <button onclick="uploadFile()">Upload</button>
+  <p id="result"></p>
+
+  <script>
+    const uploadFile = () => {
+      const input = document.getElementById('fileInput');
+      const file = input.files[0];
+      if (!file) return alert("Please select a file!");
+
+      const reader = new FileReader();
+      reader.onload = async function () {
+        const base64 = reader.result.split(',')[1];
+        const mimeType = file.type;
+        const fileName = file.name;
+
+        const response = await fetch('https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            file: base64,
+            filename: fileName,
+            mimetype: mimeType
+          })
+        });
+
+        const data = await response.json();
+        document.getElementById('result').innerHTML =
+          data.fileUrl
+            ? `<a href="${data.fileUrl}" target="_blank">View Uploaded File</a>`
+            : `Error: ${data.error}`;
+      };
+
+      reader.readAsDataURL(file);
+    };
+  </script>
+</body>
+</html>

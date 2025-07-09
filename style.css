@@ -1,0 +1,58 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f4f9ff;
+    margin: 0;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 500px;
+    background: white;
+    padding: 25px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  h1 {
+    color: #4e54c8;
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 15px;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  input[type="email"],
+  input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background: #4e54c8;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  
+  button:disabled {
+    background: #ccc;
+  }
+  
+  .share-section {
+    margin: 20px 0;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
